@@ -1,0 +1,40 @@
+import { describeTablePlugin } from './table-plugin-suite.ts'
+import { Config } from '../src/config.ts'
+import { parseMaterial, runCheck, SPEC } from '../src/model.ts'
+import { buildView } from '../src/view.ts'
+import { inject, name, resolvePackageFile, TOOL_NAME } from '../src/index.ts'
+
+describeTablePlugin({
+  name,
+  inject,
+  TOOL_NAME,
+  resolvePackageFile,
+  Config,
+  rulesFile: 'rules/tender-extract.yaml',
+  parseMaterial,
+  runCheck,
+  buildView,
+  columnNames: SPEC.columns,
+  samples: {
+    good: {
+          "project": "某某工程施工招标",
+          "tenderNo": "ZB-2026-018",
+          "source": "招标文件 2026-02-10 版",
+          "extractedBy": "张工",
+          "rows": [
+                {
+                      "序号": "1",
+                      "出处": "第三章 第 3.2 条",
+                      "原文": "投标人应具有建筑工程施工总承包二级及以上资质，并附资质证书复印件。",
+                      "类别": "资格条件",
+                      "要求": "需具备建筑工程施工总承包二级及以上资质并提供证书复印件",
+                      "是否星号": "否",
+                      "是否实质性": "是",
+                      "响应": "需响应",
+                      "责任部门": "经营部"
+                }
+          ]
+    },
+    unknownColumn: { rows: [{ 备注: '甲' }] },
+  },
+})

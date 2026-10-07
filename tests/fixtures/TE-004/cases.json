@@ -1,0 +1,32 @@
+{
+  "ruleId": "TE-004",
+  "configure": {
+    "TE-004": {
+      "values": [
+        "资格条件",
+        "技术规格",
+        "商务条款",
+        "评标办法",
+        "合同条款"
+      ]
+    }
+  },
+  "pairs": [
+    {
+      "name": "expected-state",
+      "material": "TE-004-compliant.json",
+      "expect": {
+        "ruleId": "TE-004",
+        "count": 0
+      }
+    },
+    {
+      "name": "difference-present",
+      "material": "TE-004-unsafe.json",
+      "expect": {
+        "ruleId": "TE-004",
+        "count": 1
+      }
+    }
+  ]
+}

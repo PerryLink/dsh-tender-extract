@@ -1,0 +1,195 @@
+# 招标文件条款摘录核对 规则库
+#
+# 规则数据与代码分离：替换本文件即可切换规则集版本，无需改动 TypeScript。
+#
+# 条款引用纪律（由 shared/ruleset.ts 强制校验）：
+#   - 每条规则必须写全 document / number / clause / excerpt / kind / source，
+#     且 excerpt 必须是逐字摘录，不得改写。
+#   - kind: direct                       条款直接规定了所检查的要求
+#   - kind: derived-from-principle       条款未直接规定，仅能由原则性条款推论（severity 最多 warn）
+#   - kind: institutional-configuration 阈值出自本机构配置（severity 最多 info）
+#
+# ⚠️⚠️ 本规则库最重要的说明：**摘录核对的意义在于"摘录没有被改写"，而不在于引用某条法规。**
+#   本插件核对的是"招标文件条款摘录表"的**出处可追溯性与清单自洽**：
+#     每条摘录是否给出出处、是否填写原文、提炼的要求是否与原文字面相关、
+#     条款类别是否在册、序号是否唯一、是否残留模板占位符。
+#   其规范载体是《中华人民共和国招标投标法》及其实施条例，
+#   **核查未取得这些文件的逐字条文**，故 basis 如实写明；kind 降为 derived-from-principle（封顶 warn）。
+#
+# ⚠️⚠️ 另一条**必须保留**的边界：**本插件绝不判断摘录是否"摘全了"、
+#   招标文件是否存在倾向性条款、星号条款设置是否合法**。
+#   "摘全了没有"需要与招标文件全文比对，而**本插件只看得见摘录表本身**——
+#   这是它最重要的能力边界：**它不能证明漏摘，只暴露"清单内部说不通"的地方**。
+#   → 因此本插件只核对**清单自身的齐备与自洽**：
+#     出处与原文是否填写、要求是否与原文字面相关、类别是否在册、
+#     序号是否唯一、是否残留模板占位符。
+#   → **条款类别清单（categories）出厂为空**，未配置即进 skipped。
+
+plugin: dsh-tender-extract
+version: "2026.1"
+
+rules:
+  - id: TE-001
+    title: 每条摘录都应给出出处
+    severity: warn
+    basis:
+      document: 《中华人民共和国招标投标法》
+      number: 1999年8月30日通过，2017年12月27日修正（全国人大常委会《关于修改〈中华人民共和国招标投标法〉、〈中华人民共和国计量法〉的决定》），本法自2000年1月1日起施行
+      clause: 第十九条——招标文件应当包括所有实质性要求和条件以及拟签订合同的主要条款
+      excerpt: 招标人应当根据招标项目的特点和需要编制招标文件。招标文件应当包括招标项目的技术要求、对投标人资格审查的标准、投标报价要求和评标标准等所有实质性要求和条件以及拟签订合同的主要条款。……招标项目需要划分标段、确定工期的，招标人应当合理划分标段、确定工期，并在招标文件中载明。
+      kind: derived-from-principle
+      source: https://www.beijing.gov.cn/zhengce/zhengcefagui/qtwj/201806/t20180629_776538.html
+    params:
+      check:
+        kind: presence
+        field: sourceRef
+        fix: 补填出处（章节或页码）；本条只核对是否填写，不判断摘录是否完整
+    note: >-
+      ✅ **本条 excerpt 已于 2026-10-07 换为逐字引文**（见 rules/evidence/clause-verification-tender-law-articles.md）。
+      ⚠️ kind 仍为 derived-from-principle：第十九条列举招标文件应当包括的内容，未要求摘录给出出处——那是可核验性的前提。
+      摘录若无出处，事后无法回到招标文件核对原文，投标决策与答疑质疑都失去依据。
+      本次未取得明文条号，这是可追溯性的**前提条件**，故封顶 warn。
+      ⚠️ 本条只核对出处栏是否填写，**不判断摘录是否摘全了**——
+      "漏摘"必须与招标文件全文比对才能发现，本插件看不到全文，**因此它不声称能发现漏摘**。
+
+  - id: TE-002
+    title: 每条摘录都应填写原文
+    severity: warn
+    basis:
+      document: 《中华人民共和国招标投标法》
+      number: 1999年8月30日通过，2017年12月27日修正（全国人大常委会《关于修改〈中华人民共和国招标投标法〉、〈中华人民共和国计量法〉的决定》），本法自2000年1月1日起施行
+      clause: 第十九条——招标文件应当包括所有实质性要求和条件以及拟签订合同的主要条款
+      excerpt: 招标人应当根据招标项目的特点和需要编制招标文件。招标文件应当包括招标项目的技术要求、对投标人资格审查的标准、投标报价要求和评标标准等所有实质性要求和条件以及拟签订合同的主要条款。……招标项目需要划分标段、确定工期的，招标人应当合理划分标段、确定工期，并在招标文件中载明。
+      kind: derived-from-principle
+      source: https://www.beijing.gov.cn/zhengce/zhengcefagui/qtwj/201806/t20180629_776538.html
+    params:
+      check:
+        kind: presence
+        field: rawText
+        fix: 补填条款原文；本条只核对是否填写，不判断原文是否与招标文件一致
+    note: >-
+      ✅ **本条 excerpt 已于 2026-10-07 换为逐字引文**（见 rules/evidence/clause-verification-tender-law-articles.md）。
+      ⚠️ kind 仍为 derived-from-principle：同上，第十九条未要求摘录填写原文。
+      摘录表若只有提炼的要点而没有原文，就无法核对要点是否忠实于原文——
+      **摘录的价值正在于原文可查**。本次未取得明文条号，故封顶 warn。
+      本条只核对原文栏是否填写，**不判断该原文是否与招标文件逐字一致**——
+      那需要持有人招标文件正本比对。
+
+  - id: TE-003
+    title: 提炼的要求应与原文字面相关
+    severity: warn
+    basis:
+      document: 《中华人民共和国招标投标法》
+      number: 1999年8月30日通过，2017年12月27日修正（全国人大常委会《关于修改〈中华人民共和国招标投标法〉、〈中华人民共和国计量法〉的决定》），本法自2000年1月1日起施行
+      clause: 第二十条——招标文件不得要求或者标明特定的生产供应者以及含有倾向或者排斥潜在投标人的其他内容
+      excerpt: 招标文件不得要求或者标明特定的生产供应者以及含有倾向或者排斥潜在投标人的其他内容。
+      kind: direct
+      source: https://www.beijing.gov.cn/zhengce/zhengcefagui/qtwj/201806/t20180629_776538.html
+    params:
+      check:
+        kind: sharedTerms
+        leftField: rawText
+        rightField: requirement
+        minShared: 2
+    note: >-
+      ✅ **本条 excerpt 已于 2026-10-07 换为逐字引文**（见 rules/evidence/clause-verification-tender-law-articles.md）。
+      ✅ kind 已升为 direct（2026-10-07）：第二十条逐字禁止招标文件「要求或者标明特定的生产供应者以及含有倾向或者排斥潜在投标人的其他内容」——提炼出的要求必须与原文字面相关，才可能与这一禁止相衔接。
+      ⚠️ **这是本插件唯一一条"内容相关"判断，而且刻意做得很弱**：
+      它看"要求"与"原文"是否有**共同的关键词**，完全没有共同词时提示人工复核。
+      依据说明：提炼本身就会改写措辞，**没有共同词不等于提炼错误**——
+      同义改写、归纳概括都可能不重复原词。因此：
+      · 本条只提示"这两栏看不出关系，值得复核"，**不断言提炼有误**；
+      · minShared 2 是**出厂阈值、不是标准数值**，可按本机构改写习惯调整（设为 1 更宽松）；
+      · **本条不能发现"提炼错误但用词相似"的情况**，这是它能力的上限。
+      本次未取得明文条号，故封顶 warn。
+
+  - id: TE-004
+    title: 条款类别应使用本机构口径的取值
+    severity: info
+    basis:
+      document: 《中华人民共和国招标投标法》
+      number: 1999年8月30日通过，2017年12月27日修正（全国人大常委会《关于修改〈中华人民共和国招标投标法〉、〈中华人民共和国计量法〉的决定》），本法自2000年1月1日起施行
+      clause: 第十九条第三款——招标项目需要划分标段、确定工期的，应当合理划分标段、确定工期并在招标文件中载明
+      excerpt: 招标人应当根据招标项目的特点和需要编制招标文件。招标文件应当包括招标项目的技术要求、对投标人资格审查的标准、投标报价要求和评标标准等所有实质性要求和条件以及拟签订合同的主要条款。……招标项目需要划分标段、确定工期的，招标人应当合理划分标段、确定工期，并在招标文件中载明。
+      kind: institutional-configuration
+      source: https://www.beijing.gov.cn/zhengce/zhengcefagui/qtwj/201806/t20180629_776538.html
+    params:
+      check:
+        kind: enum
+        field: category
+        values: []
+    note: >-
+      ✅ **本条 excerpt 已于 2026-10-07 换为逐字引文**（见 rules/evidence/clause-verification-tender-law-articles.md）。
+      ⚠️ kind 仍为 institutional-configuration：第十九条第三款要求合理划分标段并载明，类别取值属本机构口径。
+      values 出厂为空，表示**未配置**，本条进 skipped。
+      依据说明：条款类别的分法（资格条件、技术规格、商务条款、评标办法、
+      合同条款、星号条款……）随**本机构投标管理台账**变化，本插件**不硬编码任何分类体系**。
+      本条只核对所填值是否在册，**不判断该条款应归入哪一类**。
+
+  - id: TE-005
+    title: 摘录序号不应在表内重复
+    severity: warn
+    basis:
+      document: 《中华人民共和国招标投标法》
+      number: 1999年8月30日通过，2017年12月27日修正（全国人大常委会《关于修改〈中华人民共和国招标投标法〉、〈中华人民共和国计量法〉的决定》），本法自2000年1月1日起施行
+      clause: 第二十三条——对已发出的招标文件作澄清或修改，应当在截止时间至少十五日前书面通知所有收受人
+      excerpt: 招标人对已发出的招标文件进行必要的澄清或者修改的，应当在招标文件要求提交投标文件截止时间至少十五日前，以书面形式通知所有招标文件收受人。
+      kind: derived-from-principle
+      source: https://www.beijing.gov.cn/zhengce/zhengcefagui/qtwj/201806/t20180629_776538.html
+    params:
+      check:
+        kind: unique
+        field: seq
+    note: >-
+      ✅ **本条 excerpt 已于 2026-10-07 换为逐字引文**（见 rules/evidence/clause-verification-tender-law-articles.md）。
+      ⚠️ kind 仍为 derived-from-principle：第二十三条规范澄清修改的通知期限，未规定摘录序号不得重复。
+      序号唯一是"每条摘录只被登记一次"的**前提条件**：序号重复会让人无法准确引用条款。
+      本次未取得明文条号，故封顶 warn。比较时忽略空白字符。
+
+  - id: TE-006
+    title: 摘录表应声明项目与来源文件
+    severity: warn
+    basis:
+      document: 《中华人民共和国招标投标法》
+      number: 1999年8月30日通过，2017年12月27日修正（全国人大常委会《关于修改〈中华人民共和国招标投标法〉、〈中华人民共和国计量法〉的决定》），本法自2000年1月1日起施行
+      clause: 第十九条——招标文件应当包括所有实质性要求和条件以及拟签订合同的主要条款
+      excerpt: 招标人应当根据招标项目的特点和需要编制招标文件。招标文件应当包括招标项目的技术要求、对投标人资格审查的标准、投标报价要求和评标标准等所有实质性要求和条件以及拟签订合同的主要条款。……招标项目需要划分标段、确定工期的，招标人应当合理划分标段、确定工期，并在招标文件中载明。
+      kind: derived-from-principle
+      source: https://www.beijing.gov.cn/zhengce/zhengcefagui/qtwj/201806/t20180629_776538.html
+    params:
+      check:
+        kind: headerPresence
+        fields: [project, source]
+    note: >-
+      ✅ **本条 excerpt 已于 2026-10-07 换为逐字引文**（见 rules/evidence/clause-verification-tender-law-articles.md）。
+      ⚠️ kind 仍为 derived-from-principle：第十九条未要求摘录表声明项目与来源文件。
+      摘录表若不写明项目与来源文件（含版本或发布日期），摘录就无法与特定版本的招标文件对应。
+      本次未取得明文条号，故封顶 warn。
+      配置项 project 对应材料顶层的项目名称，source 对应来源文件。
+      若本机构表式另有"招标编号"栏，把字段加进 fields 即可。
+
+  - id: TE-007
+    title: 原文栏不应残留未替换的占位符
+    severity: warn
+    basis:
+      document: 《中华人民共和国招标投标法》
+      number: 1999年8月30日通过，2017年12月27日修正（全国人大常委会《关于修改〈中华人民共和国招标投标法〉、〈中华人民共和国计量法〉的决定》），本法自2000年1月1日起施行
+      clause: 第二十条——招标文件不得要求或者标明特定的生产供应者以及含有倾向或者排斥潜在投标人的其他内容
+      excerpt: 招标文件不得要求或者标明特定的生产供应者以及含有倾向或者排斥潜在投标人的其他内容。
+      kind: derived-from-principle
+      source: https://www.beijing.gov.cn/zhengce/zhengcefagui/qtwj/201806/t20180629_776538.html
+    params:
+      check:
+        kind: containsAny
+        field: rawText
+        terms: ['【', '】', '{{', '}}', 'XXX', 'xxx', '待填', '待补充', 'TBD', 'todo', '示例']
+        fix: 原文栏应粘贴招标文件的实际条文；残留占位符说明摘录是照模板抄的
+    note: >-
+      ✅ **本条 excerpt 已于 2026-10-07 换为逐字引文**（见 rules/evidence/clause-verification-tender-law-articles.md）。
+      ⚠️ kind 仍为 derived-from-principle：第二十条未就占位符作任何规定。
+      摘录表最危险的失效方式是**原文栏写着占位符，却被当成已核对**。
+      本次未取得明文条号，故封顶 warn。
+      ⚠️ 出厂 terms **不含**「略」这个字：摘录中"……（略）"是常见且正当的省略写法，
+      故不当作占位符。若本机构模板确实以"（略）"占位整条，可自行加入。
+
+disabled: []

@@ -1,0 +1,26 @@
+{
+  "ruleId": "TE-003",
+  "configure": {
+    "TE-003": {
+      "minShared": 2
+    }
+  },
+  "pairs": [
+    {
+      "name": "expected-state",
+      "material": "TE-003-compliant.json",
+      "expect": {
+        "ruleId": "TE-003",
+        "count": 0
+      }
+    },
+    {
+      "name": "difference-present",
+      "material": "TE-003-unsafe.json",
+      "expect": {
+        "ruleId": "TE-003",
+        "count": 1
+      }
+    }
+  ]
+}

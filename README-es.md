@@ -1,4 +1,23 @@
-# dsh-tender-extract
+# dsh-tender-extract — Comprobación de la tabla de extractos de cláusulas del pliego (procedencia y texto original)
+
+`dsh-tender-extract` lee una tabla de extractos de cláusulas —la cabecera del expediente más una fila por extracto—, aplica un paquete de reglas versionado y devuelve un informe sobre esa tabla y solo sobre ella: que cada fila indique su procedencia (`sourceRef`), que la columna del texto original (`rawText`) esté cumplimentada, que la exigencia destilada (`requirement`) comparta algún término con ese texto, que la categoría registrada figure en la lista de su institución, que no se repita ningún número de extracto (`seq`), que la cabecera nombre el proyecto y el documento de origen, y que no quede ningún marcador de plantilla en el texto original. El vocabulario de categorías de cláusula viene vacío y, sin nada configurado, `TE-004` se declara en `skipped` en lugar de pasar en silencio.
+
+## Qué responde
+
+| Usted pregunta | Qué responde |
+|---|---|
+| Un extracto de mi tabla no tiene nada en la columna de procedencia. ¿Se informa de eso? | Sí. `TE-001` exige `sourceRef` en todos los extractos e informa de cada fila en la que esté vacío. Comprueba que la procedencia esté registrada, nunca que apunte al lugar correcto, y no demuestra que falte un extracto: la exhaustividad solo puede juzgarse contra el pliego completo, que este plugin nunca ve. |
+| La columna del texto original está rellenada, ¿confirma el plugin que coincide palabra por palabra con el pliego? | `TE-002` solo comprueba que la columna `rawText` esté cumplimentada. No coteja ese texto con el pliego; esa comparación requiere tener el documento original a mano. |
+| La exigencia destilada parece venir de otro sitio por completo. ¿Se señalará? | `TE-003` busca términos compartidos entre `requirement` y `rawText` —bigramas Han solapados y palabras latinas completas— e informa de la fila cuando no comparten nada. Parafrasear cambia legítimamente las palabras, así que un hallazgo significa que las dos columnas parecen no tener relación y merecen una mirada humana, nunca que la destilación sea errónea. Tampoco detecta una destilación equivocada que sí comparta vocabulario, y el umbral `minShared` de 2 es una convención local, no una cifra normativa. |
+| Todavía no hemos decidido cómo clasificar nuestras cláusulas. ¿Qué pasa con la columna de categoría? | Sus valores vienen vacíos, así que `TE-004` se declara en `skipped` en lugar de pasar en silencio hasta que los rellene. Una vez configurado solo comprueba que el valor registrado figure en su lista; no decide a qué categoría pertenece una cláusula. |
+| Dos extractos de la tabla llevan el mismo número. | `TE-005` compara los valores de `seq` ignorando las diferencias de espaciado e informa de la repetición, porque un número que aparece dos veces no puede citarse sin ambigüedad. No juzga si la numeración es sensata por lo demás. |
+| El texto original de un extracto sigue siendo el de la plantilla. | `TE-007` informa de la fila cuyo `rawText` todavía contiene un marcador de la lista de fábrica —`【`, `】`, `{{`, `}}`, `XXX`, `xxx`, `待填`, `待补充`, `TBD`, `todo`, `示例`— porque un extracto que aún lo lleva se copió de la plantilla en vez de rellenarse. La lista excluye deliberadamente `（略）`, una forma legítima de abreviar una cláusula larga, y solo puede encontrar las palabras de esa lista. |
+
+## Normas que sigue
+
+| Documento | Número | Reglas que lo citan |
+|---|---|---|
+| 《中华人民共和国招标投标法》 | 1999年8月30日通过，2017年12月27日修正（全国人大常委会《关于修改〈中华人民共和国招标投标法〉、〈中华人民共和国计量法〉的决定》），本法自2000年1月1日起施行 | TE-001, TE-002, TE-003, TE-004, TE-005, TE-006, TE-007 |
 
 **Boundary:** this plugin checks a **招标文件条款摘录表** for what a checklist can be held to — that every
 extract gives its source, that the raw clause text is recorded, that the distilled requirement bears some

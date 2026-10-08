@@ -1,4 +1,23 @@
-# dsh-tender-extract
+# dsh-tender-extract — Tender document clause-extract table check (source and raw text)
+
+`dsh-tender-extract` reads one clause-extract table — the package header plus one row per extract — applies a versioned rule pack and returns a report on that table alone: that every row gives its source (`sourceRef`), that the raw clause text column (`rawText`) is filled in, that the distilled requirement (`requirement`) shares at least some terms with that raw text, that a recorded category is on your institution's list, that no extract number (`seq`) is repeated, that the header names the project and the source document, and that no template placeholder survives in the raw text. The clause-category vocabulary ships empty, and with nothing configured `TE-004` reports itself in `skipped` instead of passing quietly.
+
+## What it answers
+
+| You ask | What it answers |
+|---|---|
+| One extract in my table has nothing in the source column. Is that reported? | Yes. `TE-001` requires `sourceRef` on every extract and reports each row where it is blank. It checks that the source is recorded, never that it points to the right place, and it does not prove that an extract is missing — completeness can only be judged against the whole tender document, which this plugin never sees. |
+| The raw text column is filled in — does the plugin confirm it matches the tender document word for word? | `TE-002` only checks that the `rawText` column is filled. It does not compare that text against the tender document; that comparison needs the document itself in hand. |
+| The distilled requirement looks as if it came from somewhere else entirely. Will that be flagged? | `TE-003` looks for shared terms between `requirement` and `rawText` — overlapping Han bigrams and whole Latin words — and reports the row when the two share nothing. Paraphrase legitimately changes wording, so a finding means the two columns look unrelated and are worth a human look, never that the distillation is wrong. It also cannot catch a distillation that is wrong while sharing vocabulary, and the `minShared` floor of 2 is a local convention, not a standard figure. |
+| We have not decided how to classify our clauses yet. What happens to the category column? | Its values ship empty, so `TE-004` reports itself in `skipped` rather than passing quietly until you fill them in. Once configured it checks only that the recorded value is on your list; it does not decide which category a clause belongs to. |
+| Two extracts in the table carry the same number. | `TE-005` compares the `seq` values ignoring whitespace differences and reports the repeat, because a number that appears twice cannot be cited unambiguously. It does not judge whether the numbering is otherwise sensible. |
+| The raw text of one extract is still the template wording. | `TE-007` reports a row whose `rawText` still contains a placeholder from the factory list — `【`, `】`, `{{`, `}}`, `XXX`, `xxx`, `待填`, `待补充`, `TBD`, `todo`, `示例` — because an extract still carrying one was copied from the template rather than filled in. The list deliberately excludes `（略）`, a legitimate way to abridge a long clause, and it can only find the words on that list. |
+
+## Standards it follows
+
+| Document | Number | Cited by rules |
+|---|---|---|
+| 《中华人民共和国招标投标法》 | 1999年8月30日通过，2017年12月27日修正（全国人大常委会《关于修改〈中华人民共和国招标投标法〉、〈中华人民共和国计量法〉的决定》），本法自2000年1月1日起施行 | TE-001, TE-002, TE-003, TE-004, TE-005, TE-006, TE-007 |
 
 **Boundary:** this plugin checks a **招标文件条款摘录表** for what a checklist can be held to — that every
 extract gives its source, that the raw clause text is recorded, that the distilled requirement bears some

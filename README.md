@@ -63,12 +63,11 @@ extract — applies a versioned rule pack, and returns a report.
 |---|---|---|---|
 | `TE-001` | every extract gives its source | warn | principle |
 | `TE-002` | every extract records the raw text | warn | principle |
-| `TE-003` | the requirement shares terms with the raw text | warn | principle |
+| `TE-003` | the requirement shares terms with the raw text | warn | direct |
 | `TE-004` | the category comes from your vocabulary (off by default) | info | local |
 | `TE-005` | extract numbers are unique | warn | principle |
 | `TE-006` | the table names its project and source document | warn | principle |
 | `TE-007` | the raw text holds no unreplaced placeholder | warn | principle |
-
 ## Install
 
 ```sh

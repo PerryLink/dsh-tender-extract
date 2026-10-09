@@ -38,10 +38,9 @@ no placeholder survives.
 > **cannot catch a distillation that is wrong while sharing vocabulary** — that limit is stated in the rule's
 > own note and in its README entry.
 >
-> **Every `excerpt` in the rule pack says, in so many words, that the clause text was not obtained.** The
-> regime lives in 《中华人民共和国招标投标法》and its implementing regulations. The verification pass could not
-> retrieve verbatim clause text, so the pack states the gap in the `excerpt` field itself and keeps every rule
-> at `warn` or `info`. **When the texts are in hand, replace each `excerpt` with the real clause and raise
+> **The rule pack states its citation status rule by rule.** **1 of its 7 rules quote verbatim clause text** and are marked `direct`; the remaining 6 state in the `excerpt` field itself that the text was not obtained, and stay at `warn` or `info`. Where a rule still carries that note, treat it as a lead rather than as a citation. The
+> regime lives in 《中华人民共和国招标投标法》and its implementing regulations. For the rules whose text the verification pass could not retrieve, the pack states the gap in the
+> `excerpt` field itself rather than paraphrasing it, and those rules stay at `warn` or `info`. **When the texts are in hand, replace each `excerpt` with the real clause and raise
 > `kind` to `direct`.** The clause-category vocabulary ships **empty**; with nothing configured, `TE-004`
 > reports itself in `skipped` rather than passing quietly.
 

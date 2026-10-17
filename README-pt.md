@@ -6,7 +6,9 @@
 
 ## Como é a saída
 
-![Terminal demo of dsh-tender-extract: real output over its TE-007 fixture](https://raw.githubusercontent.com/PerryLink/dsh-tender-extract/main/docs/assets/dsh-tender-extract-demo.png)
+![Terminal demo of dsh-tender-extract: real output over its TE-007 fixture](https://raw.githubusercontent.com/PerryLink/dsh-tender-extract/main/docs/assets/dsh-tender-extract-hero.png)
+
+![Animated terminal demo of dsh-tender-extract](https://raw.githubusercontent.com/PerryLink/dsh-tender-extract/main/docs/assets/dsh-tender-extract-demo.gif)
 
 Saída real deste plugin sobre o seu próprio fixture de teste `TE-007` — não é uma simulação. O pacote de regras não inventa citações, por isso cada achado nomeia a cláusula aplicada e avisa que o seu texto não foi obtido.
 

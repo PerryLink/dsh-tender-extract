@@ -1,0 +1,14 @@
+[
+  {
+    "path": "docs/assets/dsh-tender-extract-hero.png",
+    "kind": "hero",
+    "alt": "dsh-tender-extract terminal output",
+    "caption": "Real dsh-tender-extract checker output; 31 tests passed."
+  },
+  {
+    "path": "docs/assets/dsh-tender-extract-demo.gif",
+    "kind": "demo",
+    "alt": "Animated dsh-tender-extract terminal session",
+    "caption": "The same run, assembled line by line."
+  }
+]

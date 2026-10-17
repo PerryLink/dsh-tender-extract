@@ -4,6 +4,13 @@
 
 `dsh-tender-extract` lee una tabla de extractos de cláusulas —la cabecera del expediente más una fila por extracto—, aplica un paquete de reglas versionado y devuelve un informe sobre esa tabla y solo sobre ella: que cada fila indique su procedencia (`sourceRef`), que la columna del texto original (`rawText`) esté cumplimentada, que la exigencia destilada (`requirement`) comparta algún término con ese texto, que la categoría registrada figure en la lista de su institución, que no se repita ningún número de extracto (`seq`), que la cabecera nombre el proyecto y el documento de origen, y que no quede ningún marcador de plantilla en el texto original. El vocabulario de categorías de cláusula viene vacío y, sin nada configurado, `TE-004` se declara en `skipped` en lugar de pasar en silencio.
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-tender-extract
+dsh --profile <name> --dump-config | grep 'dsh-tender-extract'
+```
+
 ## Cómo se ve la salida
 
 ![Terminal demo of dsh-tender-extract: real output over its TE-007 fixture](https://raw.githubusercontent.com/PerryLink/dsh-tender-extract/main/docs/assets/dsh-tender-extract-hero.png)
@@ -67,13 +74,6 @@ no placeholder survives.
 ## What it does
 
 La tabla de reglas, los campos y el comportamiento detallado están en [README.md](README.md#what-it-does) (versión principal en inglés). El plugin sólo enumera divergencias literales frente a las cláusulas citadas e indica en `skipped` cada comprobación que no pudo ejecutarse.
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-tender-extract
-dsh --profile <name> --dump-config | grep 'dsh-tender-extract'
-```
 
 ## Configuration
 

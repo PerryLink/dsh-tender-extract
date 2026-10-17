@@ -4,6 +4,13 @@
 
 `dsh-tender-extract` 读取一份条款摘录表——材料表头加每条摘录一行——套用版本化规则库，只就这张表本身出报告：每行是否给出出处（`sourceRef`）、原文栏（`rawText`）是否填写、提炼的要求（`requirement`）与原文是否有共同词、所填类别是否在本机构清单内、摘录序号（`seq`）是否重复、表头是否写明项目与来源文件、原文栏是否残留模板占位符。条款类别取值出厂为空，未配置时 `TE-004` 在 `skipped` 中说明自己未执行，而不是静默通过。
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-tender-extract
+dsh --profile <name> --dump-config | grep 'dsh-tender-extract'
+```
+
 ## 实际输出长什么样
 
 ![Terminal demo of dsh-tender-extract: real output over its TE-007 fixture](https://raw.githubusercontent.com/PerryLink/dsh-tender-extract/main/docs/assets/dsh-tender-extract-hero.png)
@@ -67,13 +74,6 @@ no placeholder survives.
 ## What it does
 
 规则表、字段说明与行为细节见 [README.md](README.md#what-it-does)（英文主版本）。本插件只列出材料与所引条款之间的字面差异，并对无法执行的检查在 `skipped` 中逐项说明。
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-tender-extract
-dsh --profile <name> --dump-config | grep 'dsh-tender-extract'
-```
 
 ## Configuration
 

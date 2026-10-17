@@ -4,6 +4,13 @@
 
 `dsh-tender-extract` reads one clause-extract table — the package header plus one row per extract — applies a versioned rule pack and returns a report on that table alone: that every row gives its source (`sourceRef`), that the raw clause text column (`rawText`) is filled in, that the distilled requirement (`requirement`) shares at least some terms with that raw text, that a recorded category is on your institution's list, that no extract number (`seq`) is repeated, that the header names the project and the source document, and that no template placeholder survives in the raw text. The clause-category vocabulary ships empty, and with nothing configured `TE-004` reports itself in `skipped` instead of passing quietly.
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-tender-extract
+dsh --profile <name> --dump-config | grep 'dsh-tender-extract'
+```
+
 ## What it looks like
 
 ![Terminal demo of dsh-tender-extract: real output over its TE-007 fixture](https://raw.githubusercontent.com/PerryLink/dsh-tender-extract/main/docs/assets/dsh-tender-extract-hero.png)
@@ -77,13 +84,6 @@ extract — applies a versioned rule pack, and returns a report.
 | `TE-005` | extract numbers are unique | warn | principle |
 | `TE-006` | the table names its project and source document | warn | principle |
 | `TE-007` | the raw text holds no unreplaced placeholder | warn | principle |
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-tender-extract
-dsh --profile <name> --dump-config | grep 'dsh-tender-extract'
-```
-
 ## Configuration
 
 | Key | Type | Default | Description |

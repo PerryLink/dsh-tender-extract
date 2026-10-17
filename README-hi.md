@@ -4,6 +4,13 @@
 
 `dsh-tender-extract` एक खंड-उद्धरण तालिका पढ़ता है — सामग्री का हेडर और प्रत्येक उद्धरण की एक पंक्ति —, संस्करणबद्ध नियम-पैक लागू करता है, और केवल उसी तालिका पर रिपोर्ट देता है: हर पंक्ति अपना स्रोत (`sourceRef`) देती है या नहीं, मूल खंड-पाठ का कॉलम (`rawText`) भरा है या नहीं, निकाली गई अपेक्षा (`requirement`) उस मूल पाठ से कुछ शब्द साझा करती है या नहीं, दर्ज श्रेणी आपकी संस्था की सूची में है या नहीं, कोई उद्धरण-क्रमांक (`seq`) दोहराया नहीं गया है या नहीं, हेडर परियोजना और स्रोत दस्तावेज़ का नाम देता है या नहीं, और मूल पाठ में कोई टेम्पलेट प्लेसहोल्डर शेष नहीं है या नहीं। खंड-श्रेणी के मान फ़ैक्टरी में खाली हैं, और कुछ भी कॉन्फ़िगर न होने पर `TE-004` चुपचाप पास होने के बजाय `skipped` में स्वयं को दर्ज करता है।
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-tender-extract
+dsh --profile <name> --dump-config | grep 'dsh-tender-extract'
+```
+
 ## आउटपुट कैसा दिखता है
 
 ![Terminal demo of dsh-tender-extract: real output over its TE-007 fixture](https://raw.githubusercontent.com/PerryLink/dsh-tender-extract/main/docs/assets/dsh-tender-extract-hero.png)
@@ -67,13 +74,6 @@ no placeholder survives.
 ## What it does
 
 नियम-सूची, फ़ील्ड और विस्तृत व्यवहार [README.md](README.md#what-it-does) (अंग्रेज़ी मुख्य संस्करण) में हैं। यह प्लगइन केवल उद्धृत धाराओं के सामने शाब्दिक अंतर सूचीबद्ध करता है और हर न चल पाई जाँच को `skipped` में बताता है।
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-tender-extract
-dsh --profile <name> --dump-config | grep 'dsh-tender-extract'
-```
 
 ## Configuration
 

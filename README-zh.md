@@ -40,26 +40,13 @@ dsh --profile <name> --dump-config | grep 'dsh-tender-extract'
 
 **边界（中文译文，以英文原文为准）：** 本插件核对一份**招标文件条款摘录表**，范围限于核对表可以据以要求的事项——每条摘录是否给出出处，条款原文是否记录，提炼出的要求与该原文是否具有某种字面关联，条款类别是否取自你配置的取值口径，序号是否唯一，以及是否残留占位符。
 
-> ### ⚠️ What this plugin can and cannot do
+> ### ⚠️ 本插件能做哪些事、不能做哪些事（以英文原文为准）
 >
-> **It cannot prove that a clause was missed.** Deciding whether an extract is *complete* requires comparing
-> against the whole tender document, and **this plugin only ever sees the extract table**. It does not claim
-> otherwise, and its rule notes say so: `TE-001` checks that a source is *recorded*, never that the extract is
-> exhaustive.
+> **它无法证明某条条款被漏掉了。** 判断一份摘录是否*完整*，需要与整份招标文件比对，而**本插件只能看到摘录表**。它从不作相反的声称，其规则 note 也写明这一点：`TE-001` 核对的是来源是否*记录在案*，从不是摘录是否详尽无遗。
 >
-> `TE-003` is the only content judgement here, and it is deliberately weak. It looks for **shared terms**
-> between the raw text and the distilled requirement, using overlapping Han bigrams and whole Latin words, and
-> reports only when the two share **nothing**. Paraphrase legitimately changes wording, so a finding means
-> "these two columns look unrelated, worth a human look" and **never** "the distillation is wrong". It also
-> **cannot catch a distillation that is wrong while sharing vocabulary** — that limit is stated in the rule's
-> own note and in its README entry.
+> `TE-003` 是这里唯一的内容判断，而且它刻意做得很弱。它查找条款原文与提炼出的要求之间的**共同词项**，使用相互重叠的汉字二元组与完整的拉丁词，并且只在两者**毫无共同之处**时才报告。改写本来就会改变措辞，因此一条发现意味着「这两栏看起来不相关，值得人工看一眼」，而**从不**意味着「提炼错了」。它同样**抓不住「用词有重合但提炼是错的」情形**——这一局限已写在规则自己的 note 与该规则的 README 条目中。
 >
-> **Every `excerpt` in the rule pack says, in so many words, that the clause text was not obtained.** The
-> regime lives in 《中华人民共和国招标投标法》and its implementing regulations. The verification pass could not
-> retrieve verbatim clause text, so the pack states the gap in the `excerpt` field itself and keeps every rule
-> at `warn` or `info`. **When the texts are in hand, replace each `excerpt` with the real clause and raise
-> `kind` to `direct`.** The clause-category vocabulary ships **empty**; with nothing configured, `TE-004`
-> reports itself in `skipped` rather than passing quietly.
+> **规则库中的每一个 `excerpt` 都明文写着：条款原文本次未取得。** 该制度见于《中华人民共和国招标投标法》及其配套法规。核验环节无法取得逐字条款原文，因此规则库在 `excerpt` 字段本身写明这一缺口，并把每条规则保持在 `warn` 或 `info`。**待取得原文后，请把每个 `excerpt` 换成真实条款，并把 `kind` 提到 `direct`。** 条款类别取值清单出厂为**空**；在未配置任何取值时，`TE-004` 会把自己记入 `skipped`，而不是悄悄通过。
 
 ## Compatibility
 

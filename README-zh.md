@@ -38,10 +38,7 @@ dsh --profile <name> --dump-config | grep 'dsh-tender-extract'
 |---|---|---|
 | 《中华人民共和国招标投标法》 | 1999年8月30日通过，2017年12月27日修正（全国人大常委会《关于修改〈中华人民共和国招标投标法〉、〈中华人民共和国计量法〉的决定》），本法自2000年1月1日起施行 | TE-001, TE-002, TE-003, TE-004, TE-005, TE-006, TE-007 |
 
-**Boundary:** this plugin checks a **招标文件条款摘录表** for what a checklist can be held to — that every
-extract gives its source, that the raw clause text is recorded, that the distilled requirement bears some
-lexical relation to that text, that the category comes from your vocabulary, that numbers are unique, and that
-no placeholder survives.
+**边界（中文译文，以英文原文为准）：** 本插件核对一份**招标文件条款摘录表**，范围限于核对表可以据以要求的事项——每条摘录是否给出出处，条款原文是否记录，提炼出的要求与该原文是否具有某种字面关联，条款类别是否取自你配置的取值口径，序号是否唯一，以及是否残留占位符。
 
 > ### ⚠️ What this plugin can and cannot do
 >

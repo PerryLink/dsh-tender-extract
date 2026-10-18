@@ -1,5 +1,7 @@
 # dsh-tender-extract — Verificação da tabela de extratos de cláusulas do caderno de encargos (origem e texto original)
 
+[English](README.md) · [简体中文](README-zh.md) · [Español](README-es.md) · [Português](README-pt.md) · [हिन्दी](README-hi.md)
+
 [![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
 
 `dsh-tender-extract` lê uma tabela de extratos de cláusulas — o cabeçalho do processo mais uma linha por extrato —, aplica um pacote de regras versionado e devolve um relatório sobre essa tabela e só sobre ela: que cada linha indique a sua origem (`sourceRef`), que a coluna do texto original (`rawText`) esteja preenchida, que a exigência destilada (`requirement`) partilhe algum termo com esse texto, que a categoria registada conste da lista da sua instituição, que nenhum número de extrato (`seq`) se repita, que o cabeçalho nomeie o projeto e o documento de origem, e que não reste nenhum marcador de modelo no texto original. O vocabulário de categorias de cláusula vem vazio e, sem nada configurado, `TE-004` declara-se em `skipped` em vez de passar em silêncio.

@@ -15,13 +15,17 @@ dsh --profile <name> --dump-config | grep 'dsh-tender-extract'
 
 ## What it looks like
 
-![Terminal demo of dsh-tender-extract: real output over its TE-007 fixture](https://raw.githubusercontent.com/PerryLink/dsh-tender-extract/main/docs/assets/dsh-tender-extract-hero.png)
+![Workflow diagram for dsh-tender-extract: call → plugin → result.](docs/assets/dsh-tender-extract-flow.svg)
 
-![Animated terminal demo of dsh-tender-extract](https://raw.githubusercontent.com/PerryLink/dsh-tender-extract/main/docs/assets/dsh-tender-extract-demo.gif)
+*Workflow overview: call → plugin → result. The examples below use the real command surface.*
 
-Real output from this plugin over its own `TE-007` test fixture — not a mock-up. The rule pack ships no invented quotations, so a finding names both the clause it applied and the fact that the clause text was not obtained.
+
 
 ## What it answers
+
+### Examples
+
+The table below is the example set: the first row is the detailed walkthrough, the remaining rows are short cases.
 
 | You ask | What it answers |
 |---|---|

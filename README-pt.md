@@ -29,6 +29,35 @@ Saída real deste plugin sobre o seu próprio fixture de teste `TE-007` — não
 
 A tabela abaixo é o conjunto de exemplos: a primeira linha é o caso detalhado e as demais são casos curtos.
 
+#### Saída detalhada
+
+**Ferramenta** `tender_extract`
+
+**Entrada**
+
+~~~json
+{"rows":[{"原文":"甲乙丙丁戊己庚辛","要求":"一二三四五六七八"}]}
+~~~
+ 
+**Saída**
+
+~~~json
+{
+  "id": "dsh-tender-extract.TE-003.de09b5a6",
+  "ruleId": "TE-003",
+  "severity": "warn",
+  "locator": {
+    "row": 1,
+    "field": "requirement"
+  },
+  "found": "第 1 行「requirement」与「rawText」没有共同词（共同词 0 个，配置下限 2 个）",
+  "expected": "「requirement」应与「rawText」在字面上相关",
+  "fix": "本条只提示两栏看不出关系、值得人工复核，不断言提炼有误；同义改写会拉低共同词数，可调整 minShared"
+}
+~~~
+
+*Observado em `dsh-tender-extract/tests/fixtures/TE-003/TE-003-unsafe.json`*
+
 | Você pergunta | O que ele responde |
 |---|---|
 | Um extrato da minha tabela não tem nada na coluna da origem. Isso é reportado? | Sim. `TE-001` exige `sourceRef` em todos os extratos e reporta cada linha em que esteja vazio. Verifica que a origem está registada, nunca que aponta para o lugar certo, e não prova que falta um extrato: a completude só pode ser julgada contra o caderno de encargos completo, que este plugin nunca vê. |

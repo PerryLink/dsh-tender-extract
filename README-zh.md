@@ -29,6 +29,35 @@ dsh --profile <name> --dump-config | grep 'dsh-tender-extract'
 
 下表是示例集：第一行是详细走查，其余行是简短案例。
 
+#### 详细输出
+
+**工具** `tender_extract`
+
+**输入**
+
+~~~json
+{"rows":[{"原文":"甲乙丙丁戊己庚辛","要求":"一二三四五六七八"}]}
+~~~
+ 
+**输出**
+
+~~~json
+{
+  "id": "dsh-tender-extract.TE-003.de09b5a6",
+  "ruleId": "TE-003",
+  "severity": "warn",
+  "locator": {
+    "row": 1,
+    "field": "requirement"
+  },
+  "found": "第 1 行「requirement」与「rawText」没有共同词（共同词 0 个，配置下限 2 个）",
+  "expected": "「requirement」应与「rawText」在字面上相关",
+  "fix": "本条只提示两栏看不出关系、值得人工复核，不断言提炼有误；同义改写会拉低共同词数，可调整 minShared"
+}
+~~~
+
+*来源 `dsh-tender-extract/tests/fixtures/TE-003/TE-003-unsafe.json`*
+
 | 你会问 | 它怎么答 |
 |---|---|
 | 我表里有一条摘录的出处栏是空的，会报出来吗？ | 会。`TE-001` 要求每条摘录都填写 `sourceRef`，为空的行逐行报出。它只核对出处是否填写，从不判断出处指得对不对；它也**不声称能发现漏摘**——某条摘录是否摘全，只能与招标文件全文比对，而本插件看不到全文。 |

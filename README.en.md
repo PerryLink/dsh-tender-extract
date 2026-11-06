@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-tender-extract-flow-dark.svg">
-  <img src="docs/assets/dsh-tender-extract-flow-light.svg" width="100%" alt="dsh-tender-extract data flow: JSON/YAML extract table → tender_extract → TE-001…TE-007 from rules/tender-extract.yaml → report (findings + skipped) → human review">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-tender-extract-hero-en-dark.webp">
+  <img src="docs/assets/dsh-tender-extract-hero-en-light.webp" width="100%" alt="dsh-tender-extract banner: the plugin name and two value lines on the left; on the right one real first run — one extract row with an empty sourceRef, six rules ran, a warn finding at row 1 field sourceRef, and TE-004 reported in skipped because the category vocabulary is unset.">
 </picture>
 
 # dsh-tender-extract
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-tender-extract
 `dsh-tender-extract` reads one clause-extract table — the package header plus one row per extract — applies a versioned rule pack and returns a report on that table alone: that every row gives its source (`sourceRef`), that the raw clause text column (`rawText`) is filled in, that the distilled requirement (`requirement`) shares at least some terms with that raw text, that a recorded category is on your institution's list, that no extract number (`seq`) is repeated, that the header names the project and the source document, and that no template placeholder survives in the raw text. The clause-category vocabulary ships empty, and with nothing configured `TE-004` reports itself in `skipped` instead of passing quietly.
 
 Who it is for: tender agents and bidders; no command line required. What you give it: the source material the check works on (a table, register or document); the original is never modified, and Excel can be converted to JSON/YAML first — in chat if the platform supports it. What it does not do: no compliance verdict, no liability finding, no replacement for the reviewer; differences only.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-tender-extract-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-tender-extract-flow-v5-light.svg" width="100%" alt="dsh-tender-extract structure: the material channel (JSON/YAML extract table, column aliases resolved to canonical fields) and the rule channel (rules/tender-extract.yaml, load guard on six keys) meet in runCheck; the seven-row rule × field matrix gives each rule's field, check kind, evidence kind and severity cap, plus this run (1 difference, 1 not run); the exits are issues and skipped, never a verdict.">
+</picture>
 
 ## Three-step setup
 
@@ -318,7 +323,7 @@ node ../scripts/sync-shared.mjs dsh-tender-extract
 | `docs/assets/` | README images |
 | `scripts/` | gates, citation check and the asset generator |
 
-README images are generated programmatically by [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Python + Pillow; light and dark SVGs) and are safe to re-run: `python scripts/gen-readme-assets.py`.
+README images are generated programmatically by [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Python + Pillow for the light/dark hero WebP, hand-written light/dark structure SVG) and are safe to re-run: `python scripts/gen-readme-assets.py`.
 
 Topics: `dsh`, `dsh-plugin`, `deepseek-harness`, `deepseek`, `cordis`, `tender`, `extract`
 

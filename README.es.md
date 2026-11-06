@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-tender-extract-flow-dark.svg">
-  <img src="docs/assets/dsh-tender-extract-flow-light.svg" width="100%" alt="Flujo de datos de dsh-tender-extract: tabla de extractos JSON/YAML → tender_extract → TE-001…TE-007 de rules/tender-extract.yaml → informe (hallazgos + skipped) → revisión humana">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-tender-extract-hero-en-dark.webp">
+  <img src="docs/assets/dsh-tender-extract-hero-en-light.webp" width="100%" alt="Pancarta de dsh-tender-extract: a la izquierda el nombre y dos líneas de valor; a la derecha una primera ejecución real: una fila de extracto con la procedencia vacía, seis reglas ejecutadas, un hallazgo warn en la fila 1, campo sourceRef, y TE-004 en skipped por no tener vocabulario de categorías.">
 </picture>
 
 # dsh-tender-extract
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-tender-extract
 `dsh-tender-extract` lee una tabla de extractos de cláusulas —la cabecera del expediente más una fila por extracto—, aplica un paquete de reglas versionado y devuelve un informe sobre esa tabla y solo sobre ella: que cada fila indique su procedencia (`sourceRef`), que la columna del texto original (`rawText`) esté cumplimentada, que la exigencia destilada (`requirement`) comparta algún término con ese texto, que la categoría registrada figure en la lista de su institución, que no se repita ningún número de extracto (`seq`), que la cabecera nombre el proyecto y el documento de origen, y que no quede ningún marcador de plantilla en el texto original. El vocabulario de categorías de cláusula viene vacío y, sin nada configurado, `TE-004` se declara en `skipped` en lugar de pasar en silencio.
 
 Para quién: agentes de licitación y licitadores; no hace falta saber usar la línea de comandos. Qué aporta: el material de origen sobre el que trabaja la comprobación (una tabla, un registro o un documento); el original nunca se modifica, y Excel puede convertirse antes a JSON/YAML —en el chat si la plataforma lo permite—. Qué no hace: no dictamina cumplimiento, no determina responsabilidades y no sustituye al revisor; solo enumera diferencias.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-tender-extract-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-tender-extract-flow-v5-light.svg" width="100%" alt="Estructura de dsh-tender-extract: el canal de material (tabla de extractos JSON/YAML, alias de columnas resueltos a campos) y el canal de reglas (rules/tender-extract.yaml, validación de seis claves al cargar) confluyen en runCheck; la matriz de siete filas regla × campo indica campo, tipo de comprobación, tipo de fundamento y tope de gravedad, más esta ejecución (1 diferencia, 1 no ejecutada); las salidas son issues y skipped, sin veredicto.">
+</picture>
 
 ## Instalación en tres pasos
 
@@ -311,7 +316,7 @@ node ../scripts/sync-shared.mjs dsh-tender-extract
 | `docs/assets/` | imágenes del README |
 | `scripts/` | verificadores, comprobación de citas y generador de imágenes |
 
-Las imágenes del README las genera programáticamente [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Python + Pillow; SVG claro y oscuro) y se puede volver a ejecutar: `python scripts/gen-readme-assets.py`.
+Las imágenes del README las genera programáticamente [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Python + Pillow para el hero WebP claro y oscuro, SVG estructural escrito a mano en claro y oscuro) y se puede volver a ejecutar: `python scripts/gen-readme-assets.py`.
 
 Topics: `dsh`, `dsh-plugin`, `deepseek-harness`, `deepseek`, `cordis`, `tender`, `extract`
 

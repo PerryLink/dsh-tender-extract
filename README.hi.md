@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-tender-extract-flow-dark.svg">
-  <img src="docs/assets/dsh-tender-extract-flow-light.svg" width="100%" alt="dsh-tender-extract डेटा प्रवाह: JSON/YAML उद्धरण तालिका → tender_extract → rules/tender-extract.yaml के TE-001…TE-007 → रिपोर्ट (findings + skipped) → मानवीय समीक्षा">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-tender-extract-hero-en-dark.webp">
+  <img src="docs/assets/dsh-tender-extract-hero-en-light.webp" width="100%" alt="dsh-tender-extract बैनर: बाईं ओर प्लगइन का नाम और दो मूल्य-पंक्तियाँ; दाईं ओर एक वास्तविक पहला रन — एक उद्धरण पंक्ति जिसका स्रोत खाली है, छह नियम चले, पंक्ति 1 फ़ील्ड sourceRef पर warn मिला, और श्रेणी-शब्दावली सेट न होने से TE-004 skipped में दर्ज हुआ।">
 </picture>
 
 # dsh-tender-extract
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-tender-extract
 `dsh-tender-extract` एक खंड-उद्धरण तालिका पढ़ता है — सामग्री का हेडर और प्रत्येक उद्धरण की एक पंक्ति —, संस्करणबद्ध नियम-पैक लागू करता है, और केवल उसी तालिका पर रिपोर्ट देता है: हर पंक्ति अपना स्रोत (`sourceRef`) देती है या नहीं, मूल खंड-पाठ का कॉलम (`rawText`) भरा है या नहीं, निकाली गई अपेक्षा (`requirement`) उस मूल पाठ से कुछ शब्द साझा करती है या नहीं, दर्ज श्रेणी आपकी संस्था की सूची में है या नहीं, कोई उद्धरण-क्रमांक (`seq`) दोहराया नहीं गया है या नहीं, हेडर परियोजना और स्रोत दस्तावेज़ का नाम देता है या नहीं, और मूल पाठ में कोई टेम्पलेट प्लेसहोल्डर शेष नहीं है या नहीं। खंड-श्रेणी के मान फ़ैक्टरी में खाली हैं, और कुछ भी कॉन्फ़िगर न होने पर `TE-004` चुपचाप पास होने के बजाय `skipped` में स्वयं को दर्ज करता है।
 
 किसके लिए: टेंडर एजेंट और बोली लगाने वाले; कमांड लाइन जानना ज़रूरी नहीं। आप क्या देते हैं: वह मूल सामग्री जिस पर जाँच चलती है (तालिका, रजिस्टर या दस्तावेज़); मूल फ़ाइल कभी नहीं बदली जाती, और Excel को पहले JSON/YAML में बदला जा सकता है — चैट में भी, अगर प्लेटफ़ॉर्म सुविधा दे। यह क्या नहीं करता: अनुपालन का निर्णय नहीं, दायित्व का निर्धारण नहीं, समीक्षक का विकल्प नहीं; केवल अंतर।
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-tender-extract-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-tender-extract-flow-v5-light.svg" width="100%" alt="dsh-tender-extract संरचना: सामग्री चैनल (JSON/YAML उद्धरण तालिका, कॉलम उपनाम फ़ील्ड में) और नियम चैनल (rules/tender-extract.yaml, लोड पर छह कुंजियों की जाँच) runCheck में मिलते हैं; सात पंक्तियों का नियम × फ़ील्ड मैट्रिक्स हर नियम का फ़ील्ड, जाँच प्रकार, आधार प्रकार और गंभीरता की सीमा दिखाता है, साथ में यह रन (1 अंतर, 1 नहीं चला); निकास issues और skipped हैं, कोई निर्णय नहीं।">
+</picture>
 
 ## तीन चरणों में शुरुआत
 
@@ -311,7 +316,7 @@ node ../scripts/sync-shared.mjs dsh-tender-extract
 | `docs/assets/` | README चित्र |
 | `scripts/` | जाँच द्वार, उद्धरण जाँच और चित्र जनरेटर |
 
-README के चित्र [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) से क्रमादेशित रूप से बनते हैं (Python + Pillow; हल्का और गहरा SVG) और दोबारा चलाए जा सकते हैं: `python scripts/gen-readme-assets.py`.
+README के चित्र [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) से क्रमादेशित रूप से बनते हैं (Python + Pillow से हल्का/गहरा hero WebP, हस्तलिखित हल्का/गहरा संरचना SVG) और दोबारा चलाए जा सकते हैं: `python scripts/gen-readme-assets.py`.
 
 Topics: `dsh`, `dsh-plugin`, `deepseek-harness`, `deepseek`, `cordis`, `tender`, `extract`
 

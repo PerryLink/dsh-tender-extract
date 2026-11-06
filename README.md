@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-tender-extract-flow-dark.svg">
-  <img src="docs/assets/dsh-tender-extract-flow-light.svg" width="100%" alt="dsh-tender-extract 数据流：JSON/YAML 摘录表 → tender_extract → rules/tender-extract.yaml 的 TE-001…TE-007 → 报告（findings + skipped）→ 人工复核">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-tender-extract-hero-zh-dark.webp">
+  <img src="docs/assets/dsh-tender-extract-hero-zh-light.webp" width="100%" alt="dsh-tender-extract 横幅：左侧是插件名与两句价值说明；右侧是一次真实首跑——摘录表第 1 行的出处为空，七条规则中六条执行，命中第 1 行 sourceRef 的 warn 差异，TE-004 因未配置类别取值进入 skipped。">
 </picture>
 
 # dsh-tender-extract
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-tender-extract
 `dsh-tender-extract` 读取一份条款摘录表——材料表头加每条摘录一行——套用版本化规则库，只就这张表本身出报告：每行是否给出出处（`sourceRef`）、原文栏（`rawText`）是否填写、提炼的要求（`requirement`）与原文是否有共同词、所填类别是否在本机构清单内、摘录序号（`seq`）是否重复、表头是否写明项目与来源文件、原文栏是否残留模板占位符。条款类别取值出厂为空，未配置时 `TE-004` 在 `skipped` 中说明自己未执行，而不是静默通过。
 
 给谁用：招标代理、投标专员；不用懂命令行。你交什么：这项核对用到的原始材料（表格、清单或文书），原件不会被修改；Excel 可先转成 JSON/YAML，对话里也能代转。它不做什么：不判合规、不认定责任、不替代审核人，只列材料内部能逐条指认的差异。
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-tender-extract-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-tender-extract-flow-v5-light.svg" width="100%" alt="dsh-tender-extract 结构图：材料通道（JSON/YAML 摘录表，列名别名映射为字段）与规则通道（rules/tender-extract.yaml，加载期校验六个键）汇入 runCheck；七行「规则 × 字段」矩阵逐条给出读哪一栏、判定类型、依据类型与其封顶严重级，本次 1 条差异、1 条未执行；出口为 issues 与 skipped，不出定性结论。">
+</picture>
 
 ## 三步上手
 
@@ -304,7 +309,7 @@ node ../scripts/sync-shared.mjs dsh-tender-extract
 | `docs/assets/` | README 配图 |
 | `scripts/` | 校验门、条款引用检查与配图脚本 |
 
-README 配图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成（Python + Pillow；深浅双版 SVG），可重复执行：`python scripts/gen-readme-assets.py`。
+README 配图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成（Python + Pillow 生成深浅双版 hero WebP，手写深浅双版结构 SVG），可重复执行：`python scripts/gen-readme-assets.py`。
 
 Topics：`dsh`, `dsh-plugin`, `deepseek-harness`, `deepseek`, `cordis`, `tender`, `extract`
 

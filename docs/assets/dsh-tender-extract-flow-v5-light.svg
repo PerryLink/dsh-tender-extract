@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="660" viewBox="0 0 1100 660" role="img" aria-labelledby="figTitle figDesc">
+<title id="figTitle">dsh-tender-extract structure: two intake channels converge in a rule × field matrix, then issues and skipped</title>
+<desc id="figDesc">The material channel (JSON or YAML extract table, column aliases resolved to canonical fields) and the rule channel (rules/tender-extract.yaml, load guard on document, number, clause, excerpt, kind and source) meet in runCheck. Its seven-row matrix states, per rule, the field read, the check kind, the evidence kind that caps severity, and this run: TE-001 is one warn difference, TE-002, TE-003, TE-005, TE-006 and TE-007 are clean, TE-004 is skipped because values[] is empty. Two exits: issues[] carries row, field, found, expected and fix; skipped[] carries the rule and its reason. There is no verdict.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0.25" y2="1"><stop offset="0" stop-color="#f9f6fd"/><stop offset="1" stop-color="#e4eaf8"/></linearGradient>
+<filter id="soft" x="-30%" y="-30%" width="170%" height="185%"><feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#2b2440" flood-opacity="0.13"/></filter>
+<pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r="1.2" fill="#cfc8e2"/></pattern>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#4B67B4"/></marker>
+<marker id="arrfaint" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8f94a4"/></marker>
+</defs>
+<rect width="1100" height="660" rx="22" fill="url(#bg)"/>
+<rect width="1100" height="660" rx="22" fill="url(#dots)" opacity="0.5"/>
+<text x="44" y="58" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="29" font-weight="700">dsh-tender-extract</text>
+<text x="44" y="88" fill="#4d5261" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="14.5">One extract table × seven rules → every difference lands on a row and a field; an empty issue list is never &#x27;all clear&#x27;.</text>
+<rect x="843.0" y="37.0" width="213.0" height="20" rx="10.0" fill="#ece7f9"/>
+<text x="949.5" y="50.85" fill="#4B67B4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">rules/tender-extract.yaml · v2026.1</text>
+<text x="44" y="112" fill="#8f94a4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">IN · JSON / YAML · header + rows[] · read-only</text>
+<text x="1056" y="112" fill="#8f94a4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="end">OUT · issues[] + skipped[] · no verdict</text>
+<line x1="44" y1="126" x2="1056" y2="126" stroke="#e7e4f0" stroke-width="1"/>
+<rect x="44" y="138" width="288" height="110" rx="18" fill="#ffffff" stroke="#e6e2ef" stroke-width="1.4" filter="url(#soft)"/>
+<text x="58" y="158" fill="#8f94a4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" font-weight="700" letter-spacing="1.2">MATERIAL · READ</text>
+<text x="58" y="184" fill="#141419" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="15" font-weight="700">extract table · header + rows[]</text>
+<text x="58" y="204" fill="#4d5261" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11.5">column aliases → canonical fields</text>
+<text x="58" y="222" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">出处 → sourceRef · 原文 → rawText</text>
+<text x="58" y="240" fill="#8f94a4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">parseTable · canonicaliseRow</text>
+<rect x="768" y="138" width="288" height="110" rx="18" fill="#ffffff" stroke="#e6e2ef" stroke-width="1.4" filter="url(#soft)"/>
+<text x="782" y="158" fill="#8f94a4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" font-weight="700" letter-spacing="1.2">RULE PACK · LOAD</text>
+<text x="782" y="184" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">rules/tender-extract.yaml</text>
+<text x="782" y="204" fill="#4d5261" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11.5">7 rules · version 2026.1</text>
+<text x="782" y="222" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">guard: document · number · clause</text>
+<text x="782" y="240" fill="#8f94a4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">excerpt · kind · source · verbatim</text>
+<path d="M188 248 C188 258 230 281 378 281" fill="none" stroke="#4B67B4" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M912 248 C912 258 870 281 722 281" fill="none" stroke="#4B67B4" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="386" y="262" width="328" height="38" rx="19" fill="#ffffff" stroke="#4B67B4" stroke-width="1.6" filter="url(#soft)"/>
+<text x="550" y="281" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="12" text-anchor="middle" font-weight="700">runCheck(input, ruleset, options)</text>
+<text x="550" y="296" fill="#4d5261" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" text-anchor="middle">pure · no I/O · no clock · no model</text>
+<path d="M550 300 V314" fill="none" stroke="#4B67B4" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="44" y="320" width="1012" height="220" rx="18" fill="#ffffff" stroke="#e6e2ef" stroke-width="1.4" filter="url(#soft)"/>
+<text x="66" y="342" fill="#141419" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="14" font-weight="700">RULE × FIELD MATRIX · run on samples/quickstart</text>
+<rect x="921.0" y="328.0" width="109.0" height="20" rx="10.0" fill="#ece7f9"/>
+<text x="975.5" y="341.85" fill="#4B67B4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">6 ran · 1 skipped</text>
+<rect x="56" y="350" width="988" height="22" rx="8" fill="#f5f2fb" opacity="0.6"/>
+<text x="66" y="365" fill="#8f94a4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" font-weight="700" letter-spacing="0.8">RULE</text>
+<text x="158" y="365" fill="#8f94a4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" font-weight="700" letter-spacing="0.8">FIELD READ</text>
+<text x="392" y="365" fill="#8f94a4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" font-weight="700" letter-spacing="0.8">CHECK KIND</text>
+<text x="560" y="365" fill="#8f94a4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" font-weight="700" letter-spacing="0.8">BASIS KIND → CAP</text>
+<text x="880" y="365" fill="#8f94a4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" font-weight="700" letter-spacing="0.8">THIS RUN</text>
+<rect x="56" y="373" width="988" height="22" rx="5" fill="#fdf3e9" opacity="0.55"/>
+<text x="66" y="390.1" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">TE-001</text>
+<text x="158" y="390.1" fill="#141419" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13">sourceRef</text>
+<text x="392" y="389.7" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">presence</text>
+<text x="560" y="389.7" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">derived-from-principle</text>
+<rect x="762" y="375.5" width="56.0" height="20" rx="10.0" fill="#fdf3e9"/>
+<text x="790.0" y="389.35" fill="#b45309" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">≤ warn</text>
+<rect x="976.0" y="375.5" width="54.0" height="20" rx="10.0" fill="#fdf3e9"/>
+<text x="1003.0" y="389.35" fill="#b45309" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">1 diff</text>
+<line x1="56" y1="396" x2="1044" y2="396" stroke="#e7e4f0" stroke-width="1" opacity="0.8"/>
+<text x="66" y="414.1" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">TE-002</text>
+<text x="158" y="414.1" fill="#141419" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13">rawText</text>
+<text x="392" y="413.7" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">presence</text>
+<text x="560" y="413.7" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">derived-from-principle</text>
+<rect x="762" y="399.5" width="56.0" height="20" rx="10.0" fill="#fdf3e9"/>
+<text x="790.0" y="413.35" fill="#b45309" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">≤ warn</text>
+<rect x="982.0" y="399.5" width="48.0" height="20" rx="10.0" fill="#eaf6ee"/>
+<text x="1006.0" y="413.35" fill="#15803d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">clean</text>
+<line x1="56" y1="420" x2="1044" y2="420" stroke="#e7e4f0" stroke-width="1" opacity="0.8"/>
+<text x="66" y="438.1" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">TE-003</text>
+<text x="158" y="438.1" fill="#141419" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13">rawText ↔ requirement</text>
+<text x="392" y="437.7" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">sharedTerms</text>
+<text x="560" y="437.7" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">direct</text>
+<rect x="762" y="423.5" width="57.0" height="20" rx="10.0" fill="#f5f2fb"/>
+<text x="790.5" y="437.35" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">≤ error</text>
+<rect x="982.0" y="423.5" width="48.0" height="20" rx="10.0" fill="#eaf6ee"/>
+<text x="1006.0" y="437.35" fill="#15803d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">clean</text>
+<rect x="56" y="445" width="988" height="22" rx="5" fill="#f5f2fb" opacity="0.75"/>
+<line x1="56" y1="444" x2="1044" y2="444" stroke="#e7e4f0" stroke-width="1" opacity="0.8"/>
+<text x="66" y="462.1" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">TE-004</text>
+<text x="158" y="462.1" fill="#141419" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13">category</text>
+<text x="392" y="461.7" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">enum</text>
+<text x="560" y="461.7" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">institutional-configuration</text>
+<rect x="762" y="447.5" width="50.0" height="20" rx="10.0" fill="#ece7f9"/>
+<text x="787.0" y="461.35" fill="#4B67B4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">≤ info</text>
+<rect x="970.0" y="447.5" width="60.0" height="20" rx="10.0" fill="#f5f2fb"/>
+<text x="1000.0" y="461.35" fill="#8f94a4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">skipped</text>
+<line x1="56" y1="468" x2="1044" y2="468" stroke="#e7e4f0" stroke-width="1" opacity="0.8"/>
+<text x="66" y="486.1" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">TE-005</text>
+<text x="158" y="486.1" fill="#141419" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13">seq</text>
+<text x="392" y="485.7" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">unique</text>
+<text x="560" y="485.7" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">derived-from-principle</text>
+<rect x="762" y="471.5" width="56.0" height="20" rx="10.0" fill="#fdf3e9"/>
+<text x="790.0" y="485.35" fill="#b45309" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">≤ warn</text>
+<rect x="982.0" y="471.5" width="48.0" height="20" rx="10.0" fill="#eaf6ee"/>
+<text x="1006.0" y="485.35" fill="#15803d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">clean</text>
+<line x1="56" y1="492" x2="1044" y2="492" stroke="#e7e4f0" stroke-width="1" opacity="0.8"/>
+<text x="66" y="510.1" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">TE-006</text>
+<text x="158" y="510.1" fill="#141419" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13">header: project + source</text>
+<text x="392" y="509.7" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">headerPresence</text>
+<text x="560" y="509.7" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">derived-from-principle</text>
+<rect x="762" y="495.5" width="56.0" height="20" rx="10.0" fill="#fdf3e9"/>
+<text x="790.0" y="509.35" fill="#b45309" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">≤ warn</text>
+<rect x="982.0" y="495.5" width="48.0" height="20" rx="10.0" fill="#eaf6ee"/>
+<text x="1006.0" y="509.35" fill="#15803d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">clean</text>
+<line x1="56" y1="516" x2="1044" y2="516" stroke="#e7e4f0" stroke-width="1" opacity="0.8"/>
+<text x="66" y="534.1" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">TE-007</text>
+<text x="158" y="534.1" fill="#141419" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13">rawText · terms</text>
+<text x="392" y="533.7" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">containsAny</text>
+<text x="560" y="533.7" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">derived-from-principle</text>
+<rect x="762" y="519.5" width="56.0" height="20" rx="10.0" fill="#fdf3e9"/>
+<text x="790.0" y="533.35" fill="#b45309" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">≤ warn</text>
+<rect x="982.0" y="519.5" width="48.0" height="20" rx="10.0" fill="#eaf6ee"/>
+<text x="1006.0" y="533.35" fill="#15803d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">clean</text>
+<path d="M282 540 V552" fill="none" stroke="#4B67B4" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M818 540 V552" fill="none" stroke="#4B67B4" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="44" y="556" width="476" height="84" rx="18" fill="#ffffff" stroke="#e6e2ef" stroke-width="1.4" filter="url(#soft)"/>
+<text x="60" y="580" fill="#141419" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700">issues[] · 1</text>
+<rect x="458.0" y="560.0" width="42.0" height="20" rx="10.0" fill="#fdf3e9"/>
+<text x="479.0" y="573.85" fill="#b45309" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">warn</text>
+<text x="60" y="602" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">row 1 · field sourceRef · TE-001</text>
+<text x="60" y="624" fill="#8f94a4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">differences only — no verdict, no score</text>
+<rect x="580" y="556" width="476" height="84" rx="18" fill="#ffffff" stroke="#e6e2ef" stroke-width="1.4" filter="url(#soft)"/>
+<text x="596" y="580" fill="#141419" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700">skipped[] · 1</text>
+<rect x="976.0" y="560.0" width="60.0" height="20" rx="10.0" fill="#f5f2fb"/>
+<text x="1006.0" y="573.85" fill="#8f94a4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">not run</text>
+<text x="596" y="602" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">TE-004 · values[] unset → reason recorded</text>
+<text x="596" y="624" fill="#8f94a4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">an empty list is never a silent pass</text>
+</svg>

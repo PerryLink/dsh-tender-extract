@@ -86,6 +86,11 @@ dsh plugin --profile <name> add dsh-tender-extract
 
    ![dsh-tender-extract 首跑终端输出：1 条 warn、1 条 skipped](docs/assets/quickstart.png)
 
+![dsh-tender-extract 首跑终端输出：1 条 warn、1 条 skipped](docs/assets/dsh-tender-extract-demo.gif)
+
+*本仓库一次真实运行的动图回放。*
+
+
 **卸载**：`dsh plugin --profile web remove dsh-tender-extract`（或从 profile patch 删掉该行）。
 
 > 在 WorkBuddy / 扣子搜「投标合规核对包」（本检查是其中一项；上架以商城为准）；命令行入口就是上面的 `dsh plugin` 命令。

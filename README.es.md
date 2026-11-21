@@ -86,6 +86,11 @@ Para quién: agentes de licitación y licitadores; no hace falta saber usar la l
 
    ![Salida de terminal de la primera ejecución de dsh-tender-extract: 1 aviso y 1 skipped](docs/assets/quickstart.png)
 
+![Salida de terminal de la primera ejecución de dsh-tender-extract: 1 aviso y 1 skipped](docs/assets/dsh-tender-extract-demo.gif)
+
+*Repetición animada de una ejecución real registrada en este repositorio.*
+
+
 **Desinstalar**: `dsh plugin --profile web remove dsh-tender-extract` (o elimine la fila del patch del perfil).
 
 > Busque «Tender Compliance Suite» en WorkBuddy / Coze (esta comprobación es una de sus partes; disponibilidad según catálogo); la entrada por línea de comandos es el comando `dsh plugin` de arriba.

@@ -86,6 +86,11 @@ Who it is for: tender agents and bidders; no command line required. What you giv
 
    ![dsh-tender-extract first-run terminal output: 1 warning, 1 skipped](docs/assets/quickstart.png)
 
+![dsh-tender-extract first-run terminal output: 1 warning, 1 skipped](docs/assets/dsh-tender-extract-demo.gif)
+
+*Animated replay of a real run recorded in this repository.*
+
+
 **Uninstall**: `dsh plugin --profile web remove dsh-tender-extract` (or remove the row from the profile patch).
 
 > Search "Tender Compliance Suite" in WorkBuddy / Coze (this check is one part of it; availability as listed); the command-line entry is the `dsh plugin` command above.

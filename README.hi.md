@@ -86,6 +86,11 @@ dsh plugin --profile <name> add dsh-tender-extract
 
    ![dsh-tender-extract की पहली बार चलाने की टर्मिनल आउटपुट: 1 चेतावनी, 1 skipped](docs/assets/quickstart.png)
 
+![dsh-tender-extract की पहली बार चलाने की टर्मिनल आउटपुट: 1 चेतावनी, 1 skipped](docs/assets/dsh-tender-extract-demo.gif)
+
+*इस रिपॉज़िटरी में दर्ज असली रन का एनिमेटेड रीप्ले।*
+
+
 **अनइंस्टॉल**: `dsh plugin --profile web remove dsh-tender-extract` (या प्रोफ़ाइल पैच से वह पंक्ति हटा दें)।
 
 > WorkBuddy / Coze में «Tender Compliance Suite» खोजें (यह जाँच उसका एक हिस्सा है; उपलब्धता कैटलॉग के अनुसार); कमांड लाइन का प्रवेश ऊपर का `dsh plugin` कमांड है।

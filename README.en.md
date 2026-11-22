@@ -7,6 +7,8 @@
 
 # dsh-tender-extract
 
+Current version `0.2.15`.
+
 **Read a tender clause-extract table and get, row by row, what is off and where — differences only, no verdict.**
 
 A DSH checker for tender agents and bidders: seven rules cover source, raw text, distilled requirement, category, sequence and template placeholders, and every finding names the row, the field and the fix.

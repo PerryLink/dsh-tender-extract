@@ -11,6 +11,8 @@
 
 टेंडर एजेंट और बोली लगाने वालों के लिए DSH जाँच: सात नियम स्रोत, मूल पाठ, निकाली गई अपेक्षा, श्रेणी, क्रमांक और टेम्पलेट प्लेसहोल्डर की जाँच करते हैं, और हर निष्कर्ष पंक्ति, फ़ील्ड और सुधार बताता है।
 
+अंतिम सत्यापन: DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
+
 [इंस्टॉल](#तीन-चरणों-में-शुरुआत) · [कॉन्फ़िगरेशन](#कॉन्फ़िगरेशन) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
@@ -89,7 +91,6 @@ dsh plugin --profile <name> add dsh-tender-extract
 ![dsh-tender-extract की पहली बार चलाने की टर्मिनल आउटपुट: 1 चेतावनी, 1 skipped](docs/assets/dsh-tender-extract-demo.gif)
 
 *इस रिपॉज़िटरी में दर्ज असली रन का एनिमेटेड रीप्ले।*
-
 
 **अनइंस्टॉल**: `dsh plugin --profile web remove dsh-tender-extract` (या प्रोफ़ाइल पैच से वह पंक्ति हटा दें)।
 
@@ -283,7 +284,7 @@ rows:
 ## समस्या निवारण
 
 - **प्लगइन इंस्टॉल हो गया पर टूल दिखता नहीं।** जाँचें कि `main` `lib/index.mjs` पर जाता है और `pnpm run build` ने उसे बनाया है; गलत `main` लोडर को प्रविष्टि चुपचाप छोड़ने पर मजबूर करता है।
-- **`dsh plugin add` असंगत बताकर मना करता है।** peer रेंज `0.1.x` और `0.2.x` दोनों को कवर करती है; बाहर होने पर स्पष्ट छूट दें: `dsh plugin --profile <name> allow-version dsh-tender-extract@0.2.12 --dsh-version <runtime> --accept-risk`।
+- **`dsh plugin add` असंगत बताकर मना करता है।** peer रेंज `0.1.x` और `0.2.x` दोनों को कवर करती है; बाहर होने पर स्पष्ट छूट दें: `dsh plugin --profile <name> allow-version dsh-tender-extract@0.2.14 --dsh-version <runtime> --accept-risk`।
 - **कोई नियम नहीं चला।** `skipped` सरणी देखें; उसमें नियम id और कारण लिखा है।
 - **`check` में `manifest-peers` विफल दिखता है।** स्थैतिक जाँचकर्ता 0.2 पंक्ति से पुरानी हार्डकोडेड peer रेंज से तुलना करता है; रनटाइम इंस्टॉल के समय अनुकूलता लागू करता है। यह `dsh-plugin-dev` की ज्ञात अपस्ट्रीम समस्या है।
 - **कोई निष्कर्ष अनुमानित आधार पर टिका है।** `derived-from-principle` / `institutional-configuration` का अर्थ है कि आधार खंड-दर-खंड सिद्ध नहीं हुआ; इसे सत्यापन का अंतराल मानें, अनुपालन का प्रमाण नहीं। रिकॉर्ड `rules/evidence/` में है।

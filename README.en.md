@@ -11,6 +11,8 @@
 
 A DSH checker for tender agents and bidders: seven rules cover source, raw text, distilled requirement, category, sequence and template placeholders, and every finding names the row, the field and the fix.
 
+Last verified on DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
+
 [Install](#three-step-setup) · [Configuration](#configuration) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
@@ -89,7 +91,6 @@ Who it is for: tender agents and bidders; no command line required. What you giv
 ![dsh-tender-extract first-run terminal output: 1 warning, 1 skipped](docs/assets/dsh-tender-extract-demo.gif)
 
 *Animated replay of a real run recorded in this repository.*
-
 
 **Uninstall**: `dsh plugin --profile web remove dsh-tender-extract` (or remove the row from the profile patch).
 
@@ -290,7 +291,7 @@ Deliberately absent: （略） — "……（略）" is a normal way to abridge 
 ## Troubleshooting
 
 - **The plugin installs but the tool never appears.** Check that `main` resolves to `lib/index.mjs` and that `pnpm run build` produced it; a wrong `main` makes the loader skip the entry silently.
-- **`dsh plugin add` refuses the package as incompatible.** The peer range covers `0.1.x` and `0.2.x`; if your runtime sits outside it, grant an explicit exemption: `dsh plugin --profile <name> allow-version dsh-tender-extract@0.2.12 --dsh-version <runtime> --accept-risk`.
+- **`dsh plugin add` refuses the package as incompatible.** The peer range covers `0.1.x` and `0.2.x`; if your runtime sits outside it, grant an explicit exemption: `dsh plugin --profile <name> allow-version dsh-tender-extract@0.2.14 --dsh-version <runtime> --accept-risk`.
 - **A rule never ran.** Read the `skipped` array; it names the rule id and the reason.
 - **`check` reports `manifest-peers` as failed.** The static checker compares against a hard-coded peer range that predates the 0.2 line; the runtime enforces peer compatibility at install time. This is a known upstream issue in `dsh-plugin-dev`.
 - **A finding rests on an inferred basis.** `derived-from-principle` / `institutional-configuration` means the basis was not established clause by clause; treat that as a verification gap, not as proof of compliance. The record is in `rules/evidence/`.

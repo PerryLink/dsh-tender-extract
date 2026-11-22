@@ -11,6 +11,8 @@
 
 Um verificador DSH para agentes de licitação e licitantes: sete regras cobrem origem, texto original, exigência destilada, categoria, sequência e marcadores de modelo, e cada achado indica a linha, o campo e a correção.
 
+Última verificação: DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
+
 [Instalação](#instalação-em-três-passos) · [Configuração](#configuração) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
@@ -89,7 +91,6 @@ Para quem: agentes de licitação e licitantes; não é preciso saber usar a lin
 ![Saída de terminal da primeira execução do dsh-tender-extract: 1 aviso e 1 skipped](docs/assets/dsh-tender-extract-demo.gif)
 
 *Repetição animada de uma execução real registrada neste repositório.*
-
 
 **Desinstalar**: `dsh plugin --profile web remove dsh-tender-extract` (ou remova a linha do patch do perfil).
 
@@ -283,7 +284,7 @@ Ausente a propósito: （略） — «……（略）» é uma forma normal de a
 ## Solução de problemas
 
 - **O plugin instala mas a ferramenta não aparece.** Confirme que `main` resolve para `lib/index.mjs` e que `pnpm run build` o gerou; um `main` errado faz o carregador ignorar a entrada em silêncio.
-- **`dsh plugin add` recusa o pacote por incompatibilidade.** A faixa de peers cobre `0.1.x` e `0.2.x`; se o seu runtime ficar fora, conceda isenção explícita: `dsh plugin --profile <name> allow-version dsh-tender-extract@0.2.12 --dsh-version <runtime> --accept-risk`.
+- **`dsh plugin add` recusa o pacote por incompatibilidade.** A faixa de peers cobre `0.1.x` e `0.2.x`; se o seu runtime ficar fora, conceda isenção explícita: `dsh plugin --profile <name> allow-version dsh-tender-extract@0.2.14 --dsh-version <runtime> --accept-risk`.
 - **Uma regra não executou.** Leia o arranjo `skipped`; lá estão o id da regra e o motivo.
 - **`check` reporta `manifest-peers` como falha.** O verificador estático compara com um intervalo de peers codificado anterior à linha 0.2; o runtime aplica a compatibilidade na instalação. É um problema conhecido do `dsh-plugin-dev`.
 - **Um achado assenta numa base inferida.** `derived-from-principle` / `institutional-configuration` significa que a base não foi estabelecida cláusula a cláusula; trate isso como uma lacuna de verificação, não como prova de conformidade. O registo está em `rules/evidence/`.

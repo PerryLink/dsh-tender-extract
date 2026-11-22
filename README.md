@@ -11,6 +11,8 @@
 
 给招标代理与投标专员用的 DSH 检查器：七条规则核对出处、原文、提炼要求、类别、序号与模板占位符，每条发现都带行号、字段与修改提示，原件不动。
 
+最近一次核验：DeepSeek Harness `dsh-v0.2.3-alpha.1`（2026-11-22）。
+
 [安装](#三步上手) · [配置](#配置) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
@@ -89,7 +91,6 @@ dsh plugin --profile <name> add dsh-tender-extract
 ![dsh-tender-extract 首跑终端输出：1 条 warn、1 条 skipped](docs/assets/dsh-tender-extract-demo.gif)
 
 *本仓库一次真实运行的动图回放。*
-
 
 **卸载**：`dsh plugin --profile web remove dsh-tender-extract`（或从 profile patch 删掉该行）。
 
@@ -276,7 +277,7 @@ rows:
 ## 故障排查
 
 - **插件装上了但工具不出现**：确认 `main` 指向 `lib/index.mjs` 且 `pnpm run build` 已生成该文件；`main` 写错会让加载器静默跳过该条目。
-- **`dsh plugin add` 报版本不兼容**：peer 范围覆盖 `0.1.x` 与 `0.2.x`；若运行时在其之外，可显式豁免：`dsh plugin --profile <name> allow-version dsh-tender-extract@0.2.12 --dsh-version <runtime> --accept-risk`。
+- **`dsh plugin add` 报版本不兼容**：peer 范围覆盖 `0.1.x` 与 `0.2.x`；若运行时在其之外，可显式豁免：`dsh plugin --profile <name> allow-version dsh-tender-extract@0.2.14 --dsh-version <runtime> --accept-risk`。
 - **某条规则没有执行**：查看 `skipped` 数组，其中写明了规则 id 与原因。
 - **`check` 报 `manifest-peers` 失败**：静态检查器比对的是一份早于 0.2 世代的硬编码 peer 范围；安装期 peer 校验以运行时为准。这是 `dsh-plugin-dev` 的已知上游问题。
 - **报告把某条规则标成推定依据**：`derived-from-principle` / `institutional-configuration` 表示依据未逐条坐实；把它当核验缺口，而不是合规证明。复核记录在 `rules/evidence/`。
